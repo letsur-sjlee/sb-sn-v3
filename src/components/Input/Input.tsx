@@ -293,7 +293,7 @@ export function Input({
   return (
     // 외부 래퍼: 라벨 + 입력 박스 + 힌트를 세로로 배치합니다.
     // flex-col + gap-sm: 요소 사이 세로 간격 6px
-    <div className={twMerge("flex flex-col gap-sm w-full", className)}>
+    <div className={twMerge("flex flex-col gap-sm w-[320px]", className)}>
 
       {/* 라벨 영역 — label prop이 있을 때만 렌더링 */}
       {label && (
