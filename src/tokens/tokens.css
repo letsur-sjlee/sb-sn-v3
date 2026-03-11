@@ -1,0 +1,310 @@
+/**
+ * tokens.css — Semantic Token 정의 파일
+ *
+ * 이 파일은 Tier 1 (Primitive) → Tier 2 (Semantic) 계층 구조를 구현합니다.
+ *
+ * [토큰 계층 구조]
+ * Tier 1 (Primitive): 원시값. base/ 디렉토리에 위치. Supernova가 자동 생성하므로 절대 수동 편집 금지.
+ *   예) --color-colors-brand-500: #00c781
+ *
+ * Tier 2 (Semantic): 의미 기반 별칭. 이 파일에 정의.
+ *   예) --color-primary: var(--color-colors-brand-500)
+ *   "브랜드 기본 색상은 brand-500 원시값을 사용한다"는 의미를 담습니다.
+ *
+ * Tier 3 (Component): 컴포넌트 전용 토큰. 각 컴포넌트 파일에 정의.
+ *   예) --button-bg: var(--color-primary)
+ *
+ * Supernova에서 sync된 primitive 토큰(../../index.css)을 가져온 뒤,
+ * 컴포넌트와 스타일에서 사용할 semantic 토큰을 :root에 정의합니다.
+ */
+
+/* Tier 1 Primitive 토큰 가져오기 — 절대 수동 편집하지 말 것 */
+@import "../../index.css";
+
+:root {
+  /* ============================================================
+   * 색상 (Color) Semantic 토큰
+   * ============================================================ */
+
+  /* --- 브랜드 색상 ---
+   * 브랜드의 주요 색상입니다. 버튼, 링크, 강조 요소 등에 사용됩니다. */
+  --color-primary: var(--color-colors-brand-500);
+  --color-primary-hover: var(--color-colors-brand-600);
+  --color-primary-foreground: var(--color-colors-base-white);
+  --color-secondary: var(--color-colors-gray-100);
+  --color-secondary-foreground: var(--color-colors-gray-700);
+  --color-secondary-hover: var(--color-colors-gray-200);
+
+  /* --- 상태 색상 ---
+   * 오류(destructive), 성공(success), 경고(warning) 상태를 나타내는 색상입니다. */
+  --color-destructive: var(--color-colors-red-600);
+  --color-destructive-hover: var(--color-colors-red-700);
+  --color-destructive-foreground: var(--color-colors-base-white);
+  --color-success: var(--color-colors-green-600);
+  --color-success-foreground: var(--color-colors-base-white);
+  --color-warning: var(--color-colors-yellow-600);
+  --color-warning-foreground: var(--color-colors-base-white);
+
+  /* --- 텍스트 색상 ---
+   * 텍스트의 중요도와 역할에 따라 계층적으로 정의됩니다.
+   * primary > secondary > tertiary 순으로 시각적 무게감이 줄어듭니다. */
+  --color-text-primary: var(--color-colors-text-primary);
+  --color-text-secondary: var(--color-colors-text-secondary);
+  --color-text-tertiary: var(--color-colors-text-tertiary);
+  --color-text-disabled: var(--color-colors-text-disabled);
+  --color-text-placeholder: var(--color-colors-text-placeholder);
+  --color-text-white: var(--color-colors-text-white);
+  --color-text-link: var(--color-colors-text-link);
+  --color-text-link-hover: var(--color-colors-text-link-hover);
+  --color-text-secondary-hover: var(--color-colors-text-secondary-hover);
+  --color-text-tertiary-hover: var(--color-colors-text-tertiary-hover);
+  --color-text-quaternary: var(--color-colors-text-quaternary);
+  --color-text-brand-primary: var(--color-colors-text-brand-primary);
+  --color-text-brand-secondary: var(--color-colors-text-brand-secondary);
+  --color-text-brand-secondary-hover: var(--color-colors-text-brand-secondary-hover);
+  --color-text-brand-tertiary: var(--color-colors-text-brand-tertiary);
+  --color-text-error-primary: var(--color-colors-text-error-primary);
+  --color-text-error-primary-hover: var(--color-colors-text-error-primary-hover);
+  --color-text-success-primary: var(--color-colors-text-success-primary);
+  --color-text-warning-primary: var(--color-colors-text-warning-primary);
+
+  /* --- 배경 색상 ---
+   * 페이지, 카드, 섹션 등의 배경에 사용되는 색상입니다. */
+  --color-bg-primary: var(--color-colors-background-primary);
+  --color-bg-primary-hover: var(--color-colors-background-primary-hover);
+  --color-bg-secondary: var(--color-colors-background-secondary);
+  --color-bg-secondary-hover: var(--color-colors-background-secondary-hover);
+  --color-bg-tertiary: var(--color-colors-background-tertiary);
+  --color-bg-disabled: var(--color-colors-background-disabled);
+  --color-bg-brand: var(--color-colors-background-brand-solid);
+  --color-bg-brand-hover: var(--color-colors-background-brand-solid-hover);
+  --color-bg-error: var(--color-colors-background-error-primary);
+  --color-bg-warning: var(--color-colors-background-warning-primary);
+  --color-bg-success: var(--color-colors-background-success-primary);
+  --color-bg-active: var(--color-colors-background-active);
+  --color-bg-primary-solid: var(--color-colors-background-primary-solid);
+  --color-bg-secondary-subtle: var(--color-colors-background-secondary-subtle);
+  --color-bg-secondary-solid: var(--color-colors-background-secondary-solid);
+  --color-bg-quaternary: var(--color-colors-background-quaternary);
+  --color-bg-disabled-subtle: var(--color-colors-background-disabled-subtle);
+  --color-bg-overlay: var(--color-colors-background-overlay);
+  --color-bg-brand-primary: var(--color-colors-background-brand-primary);
+  --color-bg-brand-secondary: var(--color-colors-background-brand-secondary);
+  --color-bg-brand-section: var(--color-colors-background-brand-section);
+  --color-bg-brand-section-subtle: var(--color-colors-background-brand-section-subtle);
+  --color-bg-error-solid: var(--color-colors-background-error-solid);
+  --color-bg-error-solid-hover: var(--color-colors-background-error-solid-hover);
+  --color-bg-error-secondary: var(--color-colors-background-error-secondary);
+  --color-bg-success-solid: var(--color-colors-background-success-solid);
+  --color-bg-success-secondary: var(--color-colors-background-success-secondary);
+  --color-bg-warning-solid: var(--color-colors-background-warning-solid);
+  --color-bg-warning-secondary: var(--color-colors-background-warning-secondary);
+
+  /* --- 테두리 색상 ---
+   * 입력 필드, 카드, 구분선 등의 테두리에 사용됩니다. */
+  --color-border: var(--color-colors-border-primary);
+  --color-border-secondary: var(--color-colors-border-secondary);
+  --color-border-disabled: var(--color-colors-border-disabled);
+  --color-border-brand: var(--color-colors-border-brand);
+  --color-border-error: var(--color-colors-border-error);
+  --color-border-tertiary: var(--color-colors-border-tertiary);
+  --color-border-disabled-subtle: var(--color-colors-border-disabled-subtle);
+  --color-border-brand-alt: var(--color-colors-border-brand-alt);
+  --color-border-error-subtle: var(--color-colors-border-error-subtle);
+  --color-border-secondary-alt: var(--color-colors-border-secondary-alt);
+
+  /* --- 포커스 링 색상 ---
+   * 키보드 접근성을 위한 포커스 표시선 색상입니다.
+   * WCAG 2.1 AA 접근성 기준을 준수하기 위해 반드시 사용해야 합니다. */
+  --color-ring: var(--color-colors-effects-focus-ring);
+  --color-ring-hover: var(--color-colors-effects-focus-ring-alt);
+  --color-ring-error: var(--color-colors-effects-focus-ring-error);
+  --color-ring-gray: var(--color-colors-effects-focus-ring-gray);
+
+  /* --- Base ---
+   * 검정, 투명 기본값 */
+  --color-base-black: var(--color-colors-base-black);
+  --color-base-transparent: var(--color-colors-base-transparent);
+
+  /* --- Alpha (반투명 레이어) ---
+   * 오버레이, glassmorphism 등에 사용되는 반투명 색상입니다. */
+  --color-alpha-white-10: var(--color-component-colors-alpha-white-10);
+  --color-alpha-white-20: var(--color-component-colors-alpha-white-20);
+  --color-alpha-white-30: var(--color-component-colors-alpha-white-30);
+  --color-alpha-white-40: var(--color-component-colors-alpha-white-40);
+  --color-alpha-white-50: var(--color-component-colors-alpha-white-50);
+  --color-alpha-white-60: var(--color-component-colors-alpha-white-60);
+  --color-alpha-white-70: var(--color-component-colors-alpha-white-70);
+  --color-alpha-white-80: var(--color-component-colors-alpha-white-80);
+  --color-alpha-white-90: var(--color-component-colors-alpha-white-90);
+  --color-alpha-black-10: var(--color-component-colors-alpha-black-10);
+  --color-alpha-black-20: var(--color-component-colors-alpha-black-20);
+  --color-alpha-black-30: var(--color-component-colors-alpha-black-30);
+  --color-alpha-black-40: var(--color-component-colors-alpha-black-40);
+  --color-alpha-black-50: var(--color-component-colors-alpha-black-50);
+  --color-alpha-black-60: var(--color-component-colors-alpha-black-60);
+  --color-alpha-black-70: var(--color-component-colors-alpha-black-70);
+  --color-alpha-black-80: var(--color-component-colors-alpha-black-80);
+  --color-alpha-black-90: var(--color-component-colors-alpha-black-90);
+
+  /* --- Muted (음소거) 색상 ---
+   * 배경이나 부가 정보에 사용되는 차분한 색상입니다. */
+  --color-muted: var(--color-colors-gray-100);
+  --color-muted-foreground: var(--color-colors-gray-500);
+
+  /* ============================================================
+   * Foreground Semantic 토큰
+   * 아이콘, SVG, 비텍스트 UI 요소에 사용. text-* 와 별도 체계.
+   * ============================================================ */
+  --color-fg-primary: var(--color-colors-foreground-primary);
+  --color-fg-secondary: var(--color-colors-foreground-secondary);
+  --color-fg-secondary-hover: var(--color-colors-foreground-secondary-hover);
+  --color-fg-tertiary: var(--color-colors-foreground-tertiary);
+  --color-fg-tertiary-hover: var(--color-colors-foreground-tertiary-hover);
+  --color-fg-quaternary: var(--color-colors-foreground-quaternary);
+  --color-fg-quaternary-hover: var(--color-colors-foreground-quaternary-hover);
+  --color-fg-white: var(--color-colors-foreground-white);
+  --color-fg-disabled: var(--color-colors-foreground-disabled);
+  --color-fg-disabled-subtle: var(--color-colors-foreground-disabled-subtle);
+  --color-fg-brand-primary: var(--color-colors-foreground-brand-primary);
+  --color-fg-brand-secondary: var(--color-colors-foreground-brand-secondary);
+  --color-fg-brand-secondary-hover: var(--color-colors-foreground-brand-secondary-hover);
+  --color-fg-error-primary: var(--color-colors-foreground-error-primary);
+  --color-fg-error-secondary: var(--color-colors-foreground-error-secondary);
+  --color-fg-warning-primary: var(--color-colors-foreground-warning-primary);
+  --color-fg-warning-secondary: var(--color-colors-foreground-warning-secondary);
+  --color-fg-success-primary: var(--color-colors-foreground-success-primary);
+  --color-fg-success-secondary: var(--color-colors-foreground-success-secondary);
+  --color-fg-link: var(--color-colors-foreground-link);
+  --color-fg-link-hover: var(--color-colors-foreground-link-hover);
+  --color-fg-required: var(--color-colors-foreground-required);
+
+  /* ============================================================
+   * Shadow Effect 색상 토큰
+   * box-shadow 레이어에 사용되는 반투명 색상 값.
+   * ============================================================ */
+  --shadow-color-xs: var(--color-colors-effects-shadow-xs);
+  --shadow-color-sm-01: var(--color-colors-effects-shadow-sm-01);
+  --shadow-color-sm-02: var(--color-colors-effects-shadow-sm-02);
+  --shadow-color-md-01: var(--color-colors-effects-shadow-md-01);
+  --shadow-color-md-02: var(--color-colors-effects-shadow-md-02);
+  --shadow-color-lg-01: var(--color-colors-effects-shadow-lg-01);
+  --shadow-color-lg-02: var(--color-colors-effects-shadow-lg-02);
+  --shadow-color-lg-03: var(--color-colors-effects-shadow-lg-03);
+  --shadow-color-xl-01: var(--color-colors-effects-shadow-xl-01);
+  --shadow-color-xl-02: var(--color-colors-effects-shadow-xl-02);
+  --shadow-color-xl-03: var(--color-colors-effects-shadow-xl-03);
+  --shadow-color-2xl-01: var(--color-colors-effects-shadow-2xl-01);
+  --shadow-color-2xl-02: var(--color-colors-effects-shadow-2xl-02);
+  --shadow-color-3xl-01: var(--color-colors-effects-shadow-3xl-01);
+  --shadow-color-3xl-02: var(--color-colors-effects-shadow-3xl-02);
+  --shadow-color-skeumorphic-inner: var(--color-colors-effects-shadow-skeumorphic-inner);
+  --shadow-color-skeumorphic-inner-border: var(--color-colors-effects-shadow-skeumorphic-inner-border);
+
+  /* Shadow Composite 토큰 — box-shadow shorthand
+   * 위에서 정의한 shadow-color-* 토큰을 조합하여 각 단계별 완성된 box-shadow 값을 제공합니다.
+   * xs(가장 약한 그림자) → 3xl(가장 강한 그림자) 순으로 7단계입니다.
+   * 컴포넌트에서 style={{ boxShadow: "var(--shadow-md)" }} 형태로 사용합니다. */
+  --shadow-xs:  0px 1px 2px 0px var(--shadow-color-xs);
+  --shadow-sm:  0px 1px 3px 0px var(--shadow-color-sm-01), 0px 1px 2px -1px var(--shadow-color-sm-02);
+  --shadow-md:  0px 4px 6px -1px var(--shadow-color-md-01), 0px 2px 4px -2px var(--shadow-color-md-02);
+  --shadow-lg:  0px 12px 16px -4px var(--shadow-color-lg-01), 0px 4px 6px -2px var(--shadow-color-lg-02), 0px 2px 2px -1px var(--shadow-color-lg-03);
+  --shadow-xl:  0px 20px 24px -4px var(--shadow-color-xl-01), 0px 8px 8px -4px var(--shadow-color-xl-02), 0px 3px 3px -1.5px var(--shadow-color-xl-03);
+  --shadow-2xl: 0px 24px 48px -12px var(--shadow-color-2xl-01), 0px 4px 4px -2px var(--shadow-color-2xl-02);
+  --shadow-3xl: 0px 32px 64px -12px var(--shadow-color-3xl-01), 0px 5px 5px -2.5px var(--shadow-color-3xl-02);
+
+  /* ============================================================
+   * 간격 (Spacing) Semantic 토큰
+   * ============================================================
+   * UI 요소 사이의 여백을 일관되게 관리합니다.
+   * none(0px) → 11xl(160px)까지 순차적으로 증가합니다. */
+  --spacing-none: var(--dimension-spacing-none);
+  --spacing-xxs: var(--dimension-spacing-xxs);
+  --spacing-xs: var(--dimension-spacing-xs);
+  --spacing-sm: var(--dimension-spacing-sm);
+  --spacing-md: var(--dimension-spacing-md);
+  --spacing-md-lg: var(--dimension-spacing-md-lg);
+  --spacing-lg: var(--dimension-spacing-lg);
+  --spacing-xl: var(--dimension-spacing-xl);
+  --spacing-2xl: var(--dimension-spacing-2xl);
+  --spacing-3xl: var(--dimension-spacing-3xl);
+  --spacing-4xl: var(--dimension-spacing-4xl);
+  --spacing-5xl: var(--dimension-spacing-5xl);
+  --spacing-6xl: var(--dimension-spacing-6xl);
+  --spacing-7xl: var(--dimension-spacing-7xl);
+  --spacing-8xl: var(--dimension-spacing-8xl);
+  --spacing-9xl: var(--dimension-spacing-9xl);
+  --spacing-10xl: var(--dimension-spacing-10xl);
+  --spacing-11xl: var(--dimension-spacing-11xl);
+
+  /* ============================================================
+   * 모서리 반경 (Border Radius) Semantic 토큰
+   * ============================================================
+   * 버튼, 카드, 입력 필드 등의 모서리 둥글기를 정의합니다.
+   * none(0px) → full(9999px, 완전한 원형)까지 정의됩니다. */
+  --radius-none: var(--dimension-radius-none);
+  --radius-xxs: var(--dimension-radius-xxs);
+  --radius-xs: var(--dimension-radius-xs);
+  --radius-sm: var(--dimension-radius-sm);
+  --radius-md: var(--dimension-radius-md);
+  --radius-lg: var(--dimension-radius-lg);
+  --radius-xl: var(--dimension-radius-xl);
+  --radius-2xl: var(--dimension-radius-2xl);
+  --radius-3xl: var(--dimension-radius-3xl);
+  --radius-4xl: var(--dimension-radius-4xl);
+  --radius-full: var(--dimension-radius-full);
+
+  /* ============================================================
+   * 아이콘 (Icon) Size 토큰
+   * ============================================================
+   * 아이콘의 크기를 일관되게 관리합니다.
+   * xs(12px) → 2xl(40px)까지 6단계로 구성됩니다. */
+  --icon-size-xs: 12px;
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  --icon-size-2xl: 40px;
+
+  /* ============================================================
+   * 타이포그래피 (Typography) Semantic 토큰
+   * ============================================================ */
+
+  /* --- 폰트 패밀리 ---
+   * 본문과 디스플레이(제목) 텍스트에 사용할 폰트를 지정합니다.
+   * 현재 프로젝트는 "Pretendard Variable"을 기본 폰트로 사용합니다. */
+  --font-family-base: var(--string-font-family-font-family-body);
+  --font-family-display: var(--string-font-family-font-family-display);
+
+  /* --- 폰트 크기 ---
+   * xs(12px) ~ xl(20px): 본문 텍스트용
+   * display-xs(24px) ~ display-2xl(72px): 제목/히어로 텍스트용 */
+  --font-size-xs: var(--dimension-font-size-text-xs);
+  --font-size-xs-sm: var(--dimension-font-size-text-xs-sm);
+  --font-size-sm: var(--dimension-font-size-text-sm);
+  --font-size-md: var(--dimension-font-size-text-md);
+  --font-size-lg: var(--dimension-font-size-text-lg);
+  --font-size-xl: var(--dimension-font-size-text-xl);
+  --font-size-display-xs: var(--dimension-font-size-display-xs);
+  --font-size-display-sm: var(--dimension-font-size-display-sm);
+  --font-size-display-md: var(--dimension-font-size-display-md);
+  --font-size-display-lg: var(--dimension-font-size-display-lg);
+  --font-size-display-xl: var(--dimension-font-size-display-xl);
+  --font-size-display-2xl: var(--dimension-font-size-display-2xl);
+
+  /* --- 줄 높이 (Line Height) ---
+   * 각 폰트 크기에 대응하는 줄 높이입니다.
+   * 가독성을 위해 폰트 크기와 함께 쌍으로 사용해야 합니다. */
+  --line-height-xs: var(--dimension-line-height-text-xs);
+  --line-height-xs-sm: var(--dimension-line-height-text-xs-sm);
+  --line-height-sm: var(--dimension-line-height-text-sm);
+  --line-height-md: var(--dimension-line-height-text-md);
+  --line-height-lg: var(--dimension-line-height-text-lg);
+  --line-height-xl: var(--dimension-line-height-text-xl);
+  --line-height-display-xs: var(--dimension-line-height-display-xs);
+  --line-height-display-sm: var(--dimension-line-height-display-sm);
+  --line-height-display-md: var(--dimension-line-height-display-md);
+  --line-height-display-lg: var(--dimension-line-height-display-lg);
+  --line-height-display-xl: var(--dimension-line-height-display-xl);
+  --line-height-display-2xl: var(--dimension-line-height-display-2xl);
+}

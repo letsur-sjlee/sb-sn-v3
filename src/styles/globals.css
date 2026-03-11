@@ -1,0 +1,273 @@
+/**
+ * globals.css — Tailwind CSS v4.1 전역 스타일 진입점
+ *
+ * 이 파일은 다음 세 가지 역할을 수행합니다:
+ *
+ * 1. Tailwind CSS 기본 스타일 불러오기 (@import "tailwindcss")
+ * 2. Semantic 디자인 토큰 불러오기 (@import "../tokens/tokens.css")
+ * 3. Tailwind의 @theme 블록에 CSS Custom Properties를 매핑하여
+ *    토큰 기반의 Tailwind 유틸리티 클래스를 활성화
+ *
+ * [사용 예시]
+ * - 색상: className="bg-primary text-primary-foreground"
+ * - 간격: className="p-md gap-lg"
+ * - 반경: className="rounded-md"
+ * - 폰트: className="text-sm font-sans"
+ *
+ * [주의]
+ * - 이 파일은 라이브러리 소비자 측의 진입점 CSS에 import되어야 합니다.
+ * - Storybook에서는 .storybook/preview.ts에서 import합니다.
+ */
+
+/* Tailwind CSS v4.1 기본 스타일 불러오기 */
+@import "tailwindcss";
+
+/* Tier 2 Semantic 토큰 불러오기 */
+@import "../tokens/tokens.css";
+
+/**
+ * @theme inline 블록
+ * CSS Custom Properties(디자인 토큰)를 Tailwind 유틸리티 클래스로 매핑합니다.
+ *
+ * `inline` 키워드: Tailwind가 값을 정적으로 추출하지 않고 var() 참조를 그대로 유지합니다.
+ * 이렇게 해야 tokens.css에서 이미 정의된 변수를 순환 참조 없이 재사용할 수 있습니다.
+ *
+ * 예) --color-primary → bg-primary, text-primary, border-primary 등
+ *     생성되는 CSS: background-color: var(--color-primary)
+ */
+@theme inline {
+  /* ============================================================
+   * 색상 매핑
+   * ============================================================ */
+
+  /* 브랜드 색상 */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-secondary-hover: var(--color-secondary-hover);
+
+  /* 상태 색상 */
+  --color-destructive: var(--color-destructive);
+  --color-destructive-hover: var(--color-destructive-hover);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-success: var(--color-success);
+  --color-success-foreground: var(--color-success-foreground);
+  --color-warning: var(--color-warning);
+  --color-warning-foreground: var(--color-warning-foreground);
+
+  /* Muted 색상 */
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+
+  /* 테두리 및 포커스 링 */
+  --color-border: var(--color-border);
+  --color-ring: var(--color-ring);
+  --color-ring-hover: var(--color-ring-hover);
+  --color-ring-error: var(--color-ring-error);
+  --color-ring-gray: var(--color-ring-gray);
+
+  /* 배경 색상 — 기본 계층 */
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-primary-hover: var(--color-bg-primary-hover);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-secondary-hover: var(--color-bg-secondary-hover);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+  --color-bg-quaternary: var(--color-bg-quaternary);
+  --color-bg-disabled: var(--color-bg-disabled);
+  --color-bg-disabled-subtle: var(--color-bg-disabled-subtle);
+
+  /* 배경 색상 — 브랜드 */
+  --color-bg-brand: var(--color-bg-brand);
+  --color-bg-brand-hover: var(--color-bg-brand-hover);
+
+  /* 배경 색상 — 상태 (error/warning/success) */
+  --color-bg-error: var(--color-bg-error);
+  --color-bg-warning: var(--color-bg-warning);
+  --color-bg-success: var(--color-bg-success);
+  --color-bg-error-solid-hover: var(--color-bg-error-solid-hover);
+  --color-bg-error-secondary: var(--color-bg-error-secondary);
+  --color-bg-success-secondary: var(--color-bg-success-secondary);
+  --color-bg-warning-secondary: var(--color-bg-warning-secondary);
+
+  /* 배경 추가 — 기타 */
+  --color-bg-active: var(--color-bg-active);
+  --color-bg-primary-solid: var(--color-bg-primary-solid);
+  --color-bg-secondary-subtle: var(--color-bg-secondary-subtle);
+  --color-bg-secondary-solid: var(--color-bg-secondary-solid);
+  --color-bg-overlay: var(--color-bg-overlay);
+  --color-bg-brand-primary: var(--color-bg-brand-primary);
+  --color-bg-brand-secondary: var(--color-bg-brand-secondary);
+  --color-bg-brand-section: var(--color-bg-brand-section);
+  --color-bg-error-solid: var(--color-bg-error-solid);
+  --color-bg-success-solid: var(--color-bg-success-solid);
+  --color-bg-warning-solid: var(--color-bg-warning-solid);
+
+  /* 텍스트 색상 — 계층적 텍스트 색상 (primary > secondary > tertiary > quaternary 순으로 약해짐) */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-secondary-hover: var(--color-text-secondary-hover);
+  --color-text-tertiary: var(--color-text-tertiary);
+  --color-text-tertiary-hover: var(--color-text-tertiary-hover);
+  --color-text-quaternary: var(--color-text-quaternary);
+  --color-text-disabled: var(--color-text-disabled);
+  --color-text-placeholder: var(--color-text-placeholder);
+  --color-text-white: var(--color-text-white);
+  --color-text-link: var(--color-text-link);
+  --color-text-link-hover: var(--color-text-link-hover);
+
+  /* 텍스트 추가 — 브랜드·상태 계열 */
+  --color-text-brand-primary: var(--color-text-brand-primary);
+  --color-text-brand-secondary: var(--color-text-brand-secondary);
+  --color-text-error-primary: var(--color-text-error-primary);
+  --color-text-success-primary: var(--color-text-success-primary);
+  --color-text-warning-primary: var(--color-text-warning-primary);
+
+  /* 테두리 추가 — 누락된 토큰 보완 */
+  --color-border-secondary: var(--color-border-secondary);
+  --color-border-secondary-alt: var(--color-border-secondary-alt);
+  --color-border-disabled: var(--color-border-disabled);
+  --color-border-disabled-subtle: var(--color-border-disabled-subtle);
+  --color-border-brand: var(--color-border-brand);
+  --color-border-brand-alt: var(--color-border-brand-alt);
+  --color-border-error: var(--color-border-error);
+  --color-border-error-subtle: var(--color-border-error-subtle);
+  --color-border-tertiary: var(--color-border-tertiary);
+
+  /* Foreground (아이콘용) — 아이콘·SVG·비텍스트 UI 요소에 사용 */
+  --color-fg-primary: var(--color-fg-primary);
+  --color-fg-secondary: var(--color-fg-secondary);
+  --color-fg-secondary-hover: var(--color-fg-secondary-hover);
+  --color-fg-tertiary: var(--color-fg-tertiary);
+  --color-fg-tertiary-hover: var(--color-fg-tertiary-hover);
+  --color-fg-quaternary: var(--color-fg-quaternary);
+  --color-fg-quaternary-hover: var(--color-fg-quaternary-hover);
+  --color-fg-white: var(--color-fg-white);
+  --color-fg-disabled: var(--color-fg-disabled);
+  --color-fg-disabled-subtle: var(--color-fg-disabled-subtle);
+  --color-fg-brand-primary: var(--color-fg-brand-primary);
+  --color-fg-brand-secondary: var(--color-fg-brand-secondary);
+  --color-fg-brand-secondary-hover: var(--color-fg-brand-secondary-hover);
+  --color-fg-error-primary: var(--color-fg-error-primary);
+  --color-fg-error-secondary: var(--color-fg-error-secondary);
+  --color-fg-warning-primary: var(--color-fg-warning-primary);
+  --color-fg-warning-secondary: var(--color-fg-warning-secondary);
+  --color-fg-success-primary: var(--color-fg-success-primary);
+  --color-fg-success-secondary: var(--color-fg-success-secondary);
+  --color-fg-link: var(--color-fg-link);
+  --color-fg-link-hover: var(--color-fg-link-hover);
+  --color-fg-required: var(--color-fg-required);
+
+  /* ============================================================
+   * 폰트 패밀리 매핑
+   * font-sans 클래스 → Pretendard Variable 폰트 적용
+   * ============================================================ */
+  --font-sans: var(--font-family-base), system-ui, sans-serif;
+
+  /* ============================================================
+   * 폰트 크기 매핑
+   * text-xs, text-sm 등의 Tailwind 클래스로 사용 가능합니다.
+   * ============================================================ */
+  --text-xs: var(--font-size-xs);
+  --text-xs-sm: var(--font-size-xs-sm);
+  --text-sm: var(--font-size-sm);
+  --text-base: var(--font-size-md);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-display-xs: var(--font-size-display-xs);
+  --text-display-sm: var(--font-size-display-sm);
+  --text-display-md: var(--font-size-display-md);
+  --text-display-lg: var(--font-size-display-lg);
+  --text-display-xl: var(--font-size-display-xl);
+  --text-display-2xl: var(--font-size-display-2xl);
+
+  /* ============================================================
+   * 줄 높이(Line Height) 매핑
+   * leading-sm, leading-base 등의 Tailwind 클래스로 사용 가능합니다.
+   * 각 폰트 크기 토큰과 쌍으로 사용해 가독성을 확보합니다.
+   * ============================================================ */
+  --leading-xs: var(--line-height-xs);
+  --leading-xs-sm: var(--line-height-xs-sm);
+  --leading-sm: var(--line-height-sm);
+  --leading-base: var(--line-height-md);
+  --leading-lg: var(--line-height-lg);
+  --leading-xl: var(--line-height-xl);
+  --leading-display-xs: var(--line-height-display-xs);
+  --leading-display-sm: var(--line-height-display-sm);
+  --leading-display-md: var(--line-height-display-md);
+  --leading-display-lg: var(--line-height-display-lg);
+  --leading-display-xl: var(--line-height-display-xl);
+  --leading-display-2xl: var(--line-height-display-2xl);
+
+  /* ============================================================
+   * 간격(Spacing) 매핑
+   * p-md, m-lg, gap-xl 등의 Tailwind 클래스로 사용 가능합니다.
+   * ============================================================ */
+  --spacing-none: var(--spacing-none);
+  --spacing-xxs: var(--spacing-xxs);
+  --spacing-xs: var(--spacing-xs);
+  --spacing-sm: var(--spacing-sm);
+  --spacing-md: var(--spacing-md);
+  --spacing-md-lg: var(--spacing-md-lg);
+  --spacing-lg: var(--spacing-lg);
+  --spacing-xl: var(--spacing-xl);
+  --spacing-2xl: var(--spacing-2xl);
+  --spacing-3xl: var(--spacing-3xl);
+  --spacing-4xl: var(--spacing-4xl);
+  --spacing-5xl: var(--spacing-5xl);
+  --spacing-6xl: var(--spacing-6xl);
+  --spacing-7xl: var(--spacing-7xl);
+  --spacing-8xl: var(--spacing-8xl);
+  --spacing-9xl: var(--spacing-9xl);
+  --spacing-10xl: var(--spacing-10xl);
+
+  /* ============================================================
+   * 그림자(Shadow) 매핑
+   * shadow-xs, shadow-sm 등의 Tailwind 클래스로 사용 가능합니다.
+   * tokens.css의 --shadow-* composite 토큰을 연결합니다.
+   * ============================================================ */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-3xl: var(--shadow-3xl);
+
+  /* ============================================================
+   * 모서리 반경(Border Radius) 매핑
+   * rounded-sm, rounded-md 등의 Tailwind 클래스로 사용 가능합니다.
+   * ============================================================ */
+  --radius-none: var(--radius-none);
+  --radius-xxs: var(--radius-xxs);
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+  --radius-4xl: var(--radius-4xl);
+  --radius-full: var(--radius-full);
+}
+
+/**
+ * @layer base
+ * 모든 HTML 요소에 기본으로 적용되는 전역 스타일입니다.
+ * 디자인 토큰을 활용하여 일관된 기본 UI를 만듭니다.
+ */
+@layer base {
+  /* 모든 요소의 테두리 색상 기본값과 box-sizing 설정 */
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  /* body 기본 배경색, 텍스트 색상, 폰트 패밀리 설정 */
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base), system-ui, sans-serif;
+  }
+}
