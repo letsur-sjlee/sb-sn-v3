@@ -1,0 +1,17 @@
+/**
+ * This file was generated automatically by Supernova.io and should not be changed manually.
+ * To modify the format or content of this file, please contact your design system team. 
+ */
+
+:root {
+  --string-font-family-font-family-display: "Pretendard Variable";
+  --string-font-family-font-family-body: "Pretendard Variable";
+  --string-font-weight-regular: "Regular";
+  --string-font-weight-regular-italic: "Regular italic";
+  --string-font-weight-medium: "Medium";
+  --string-font-weight-medium-italic: "Medium italic";
+  --string-font-weight-semibold: "Semibold";
+  --string-font-weight-semibold-italic: "Semibold italic";
+  --string-font-weight-bold: "Bold";
+  --string-font-weight-bold-italic: "Bold italic";
+}

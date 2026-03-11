@@ -1,1 +1,4 @@
-/* Tier 1 Primitive 토큰 — Supernova에서 자동 생성됩니다. 수동 편집 금지. */
+/* Base tokens */
+@import "./base/dimension.css";
+@import "./base/string.css";
+@import "./base/color.css";
